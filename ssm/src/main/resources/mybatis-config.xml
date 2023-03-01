@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+    <!--全局设置-->
+    <settings>
+        <!--将下划线映射为驼峰-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--延迟加载的全局开关。默认值false不开启。-->
+        <!--什么意思：所有只要但凡带有分步的，都采用延迟加载。-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+    </settings>
+
+    <!--插件-->
+    <plugins>
+        <!--配置分页插件-->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
+
+</configuration>

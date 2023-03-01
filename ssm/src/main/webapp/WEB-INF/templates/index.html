@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <script type="text/javascript" th:src="@{/static/js/vue.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/axios.min.js}"></script>
+</head>
+
+<body>
+<h1>index.html</h1>
+
+<div id="app">
+    <input type="button" value="初始化员工数据" onclick="initData()"/>
+    <a th:href="@{/employee/page/1}">查询员工的分页信息</a>
+</div>
+
+<script>
+    function initData() {
+        var flag = confirm("确定初始化吗？之前的数据将丢失！！！")
+        if(flag){
+            axios.post(
+                "/ssm/employee/initData"
+            ).then(response=>{
+                if(response.data){
+                    alert("初始化成功")
+                }else {
+                    alert("初始化失败！")
+                }
+            });
+        }
+    }
+
+</script>
+
+<script type="text/javascript">
+    var vue = new Vue({
+        el:"#app",
+        methods:{
+            initData(){
+                var flag = confirm("确定初始化吗？之前的数据将丢失！！！")
+                if(flag){
+                    axios.post(
+                        "/ssm/employee/initData"
+                    ).then(response=>{
+                        if(response.data){
+                        alert("初始化成功")
+                    }else {
+                        alert("初始化失败！")
+                    }
+                });
+                }
+            }
+        }
+    });
+</script>
+</body>
+
+</html>
